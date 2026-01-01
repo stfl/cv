@@ -1,0 +1,129 @@
+#+TITLE: Typst CV with Brilliant-CV
+#+AUTHOR: Stefan Lendl
+
+* Overview
+
+A professional CV and cover letter built with [[https://typst.app][Typst]] using the [[https://typst.app/universe/package/brilliant-cv/][brilliant-cv]] template.
+
+* Requirements
+
+- [[https://typst.app][Typst]] compiler
+- [[https://just.systems][Just]] command runner
+- Fonts (see [[#fonts][Fonts]] section)
+
+* Quick Start
+
+#+begin_src bash
+just           # Compile CV to PDF
+just watch     # Watch mode with auto-recompile
+just open      # Compile and open in browser
+#+end_src
+
+* Project Structure
+
+#+begin_example
+.
+├── cv.typ              # Main CV document
+├── letter.typ          # Cover letter
+├── metadata.toml       # Personal info, layout, colors
+├── modules_en/         # English content modules
+│   ├── education.typ
+│   ├── professional.typ
+│   ├── skills.typ
+│   ├── projects.typ
+│   ├── certificates.typ
+│   └── publications.typ
+└── assets/
+    ├── fonts/          # Static font files
+    ├── avatar.jpg      # Profile photo
+    └── logos/          # Organization logos
+#+end_example
+
+* Configuration
+
+All personal information and layout settings are in =metadata.toml=:
+
+- =[personal]= - Name, contact info, social links
+- =[layout]= - Colors, fonts, spacing
+- =[lang.en]= - Header quote, footer text
+
+* Commands
+
+| Command             | Description                    |
+|---------------------+--------------------------------|
+| =just=              | Compile CV (default)           |
+| =just check=        | Type-check without output      |
+| =just watch=        | Watch and auto-recompile       |
+| =just open=         | Compile and open PDF           |
+| =just letter=       | Compile cover letter           |
+| =just watch-letter= | Watch cover letter             |
+
+* Fonts
+:PROPERTIES:
+:CUSTOM_ID: fonts
+:END:
+
+Typst does not support variable fonts. You must download *static* font versions and place them in =assets/fonts/=.
+
+** Required Fonts
+*** Source Sans 3 (body text)
+
+Download from [[https://fonts.google.com/specimen/Source+Sans+3][Google Fonts]]:
+1. Click "Download family"
+2. Extract to =assets/fonts/SourceSans3/=
+3. Use the files in =static/= subdirectory
+
+*** Roboto (headers)
+
+Download from [[https://fonts.google.com/specimen/Roboto][Google Fonts]]:
+1. Click "Download family"
+2. Extract to =assets/fonts/Roboto/=
+3. Use the files in =static/= subdirectory
+
+*** Font Awesome (icons)
+
+Download from [[https://fontawesome.com/download][Font Awesome]]:
+1. Download "Free for Desktop"
+2. Extract OTF files to =assets/fonts/FontAwesome/otfs/=
+
+** Expected Structure
+
+#+begin_example
+assets/fonts/
+├── Roboto/
+│   └── static/
+│       ├── Roboto-Regular.ttf
+│       ├── Roboto-Bold.ttf
+│       └── ...
+├── SourceSans3/
+│   └── static/
+│       ├── SourceSans3-Regular.ttf
+│       ├── SourceSans3-Bold.ttf
+│       └── ...
+└── FontAwesome/
+    └── otfs/
+        ├── Font Awesome 6 Free-Regular-400.otf
+        ├── Font Awesome 6 Free-Solid-900.otf
+        └── Font Awesome 6 Brands-Regular-400.otf
+#+end_example
+
+** Justfile Configuration
+
+Font paths are configured in =justfile=:
+
+#+begin_src just
+font_paths := "--font-path assets/fonts/Roboto/static --font-path assets/fonts/SourceSans3/static --font-path assets/fonts/FontAwesome/otfs/"
+#+end_src
+
+To add additional fonts, append another =--font-path= entry.
+
+* Multi-language Support
+
+Set the language in =metadata.toml=:
+
+#+begin_src toml
+language = "en"  # Uses modules_en/
+#+end_src
+
+Create corresponding module directories (=modules_de/=, =modules_fr/=, etc.) with translated content.
+
