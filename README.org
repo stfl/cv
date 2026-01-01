@@ -63,28 +63,9 @@ All personal information and layout settings are in =metadata.toml=:
 :CUSTOM_ID: fonts
 :END:
 
-Typst does not support variable fonts. You must download *static* font versions and place them in =assets/fonts/=.
-
-** Required Fonts
-*** Source Sans 3 (body text)
-
-Download from [[https://fonts.google.com/specimen/Source+Sans+3][Google Fonts]]:
-1. Click "Download family"
-2. Extract to =assets/fonts/SourceSans3/=
-3. Use the files in =static/= subdirectory
-
-*** Roboto (headers)
-
-Download from [[https://fonts.google.com/specimen/Roboto][Google Fonts]]:
-1. Click "Download family"
-2. Extract to =assets/fonts/Roboto/=
-3. Use the files in =static/= subdirectory
-
-*** Font Awesome (icons)
-
-Download from [[https://fontawesome.com/download][Font Awesome]]:
-1. Download "Free for Desktop"
-2. Extract OTF files to =assets/fonts/FontAwesome/otfs/=
+Typst does not support variable fonts. You must download *static* font versions
+and place them in =assets/fonts/=.
+~CAUSION~: Fonts need to be vendored into the repository
 
 ** Expected Structure
 
