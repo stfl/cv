@@ -17,8 +17,6 @@ just letter       # Compile cover letter
 just watch-letter # Watch cover letter
 ```
 
-All commands include `--font-path` flags for local static fonts in `assets/fonts/`.
-
 ## Architecture
 
 ```
@@ -33,7 +31,6 @@ modules_en/            # English content modules (active)
   ├── certificates.typ
   └── publications.typ
 assets/
-  ├── fonts/           # Static fonts (Roboto, SourceSans3, FontAwesome)
   ├── avatar.jpg       # Profile photo
   └── logos/           # Organization logos for cv-entry
 ```
@@ -43,7 +40,6 @@ assets/
 - **Language switching**: Set `language = "en"` in metadata.toml; modules load from `modules_<lang>/`
 - **CV entries**: Use `cv-entry()` from brilliant-cv with `title`, `society`, `date`, `location`, `description`, `tags`
 - **Skills**: Use `cv-skill()` or `cv-skill-with-level()` with `h-bar()` separator
-- **Fonts**: Static TTF/OTF files required (Typst doesn't support variable fonts)
 
 ## metadata.toml Structure
 
@@ -60,3 +56,24 @@ assets/
 [lang.en]
   header_quote = "..."
 ```
+
+## Development Environment
+
+Nix flake provides reproducible dev environment with typst, just, and fonts:
+
+```bash
+direnv allow          # Activate flake devShell via .envrc
+nix develop           # Or enter manually
+```
+
+`flake.nix` configures:
+- `typst`, `just` tools
+- Fonts: `source-sans`, `roboto`, `font-awesome`
+- `FONTCONFIG_FILE` for fontconfig-aware tools
+
+## CI/CD
+
+GitHub Action (`.github/workflows/release.yml`) on push to `main`:
+1. Builds CV using nix devShell
+2. Creates release tagged `YYYY-MM-DD` (commit date)
+3. Uploads `YYYY-MM-DD-Stefan-Lendl-CV.pdf`
