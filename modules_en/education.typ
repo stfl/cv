@@ -20,3 +20,13 @@
   date: [2013],
   location: [Vienna, Austria],
 )
+
+#cv-entry(
+  title: [Electronics Engineering],
+  society: [HTL Hollabrunn],
+  date: [2009],
+  location: [Hollabrunn],
+  description: list(
+    [Recipient of the OVE Award for the final project],
+  ),
+)
