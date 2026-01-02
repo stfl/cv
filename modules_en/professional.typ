@@ -49,7 +49,7 @@
   date: [Nov 2022 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Building backend, infrastructure, and embedded solutions for diverse clients],
+    [Building backend, infrastructure, and embedded solutions for diverse clients while managing ever changing requirements],
   ),
   tags: ("Consulting", "Backend", "Infrastructure"),
 )

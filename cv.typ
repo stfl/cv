@@ -26,6 +26,6 @@
   "education",
   "projects",
   "certificates",
-  "publications",
+  // "publications",
   "skills",
 ))

@@ -1,22 +1,21 @@
 // Imports
 #import "@preview/brilliant-cv:3.1.1": cv-section, cv-skill, cv-skill-with-level, h-bar
 
-
 #cv-section("Skills")
 
 #cv-skill(
   type: [Programming],
-  info: [Rust #h-bar() Python #h-bar() C++],
+  info: [Rust #h-bar() Python #h-bar() C #h-bar() C++],
 )
 
 #cv-skill(
   type: [Tech Stack],
-  info: [Embedded Linux #h-bar() Yocto #h-bar() DevOps #h-bar() Infrastructure as Code],
+  info: [Embedded Linux #h-bar() Yocto #h-bar() Django #h-bar() Pandas #h-bar() DevOps #h-bar() Kubernetes],
 )
 
 #cv-skill(
   type: [Expertise],
-  info: [Software Architecture #h-bar() Embedded Systems #h-bar() Real-time Computing],
+  info: [Software Architecture #h-bar() Embedded Systems #h-bar() Real-time Computing #h-bar() Requirements Management #h-bar() Team Lead],
 )
 
 #cv-skill-with-level(
@@ -33,6 +32,6 @@
 
 #cv-skill-with-level(
   type: [],
-  level: 3,
-  info: [Spanish (Intermediate)],
+  level: 2,
+  info: [Spanish (Used to be better)],
 )
