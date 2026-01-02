@@ -10,9 +10,12 @@
   date: [Feb 2023 - Jun 2024],
   location: [Vienna, Austria],
   description: list(
-    [Organized and hosted monthly meetups for the local Rust programming community],
-    [Coordinated speakers, venues, and community engagement],
-    [Fostered knowledge sharing and networking among Rust developers in Vienna],
+    [Led and organized monthly technical meetups for the Rust programming
+    community, growing from 200 to 500 members],
+    [Coordinated technical speakers, secured venues, and facilitated knowledge
+    sharing sessions on advanced Rust topics and real-world applications],
+    [Built and maintained collaborative network of Rust developers, contributing
+    to the growth of the local tech community],
   ),
   tags: ("Rust", "Community", "Meetup"),
 )
@@ -21,12 +24,17 @@
   title: [Forex Backtest Framework],
   society: [Personal Project],
   date: [2020 - 2021],
+  location: [Vienna, Austria],
   description: list(
-    [Built a backtest runner in Rust for optimizing MetaTrader 5 trading strategies],
-    [Developed REST API for programmatic backtest execution and result transformation],
-    [Created Python analysis pipeline for performance metrics and strategy evaluation],
+    [Architected and implemented high-performance backtest engine in Rust for
+    MetaTrader 5 trading strategy optimization, enabling rapid iteration on
+    algorithmic trading models],
+    [Designed RESTful API for programmatic backtest execution, parameter
+    optimization, and automated result aggregation],
+    [Built Python-based analysis pipeline for statistical performance
+    evaluation, risk metrics calculation, and strategy comparison],
   ),
-  tags: ("Rust", "Python", "MetaTrader 5", "Algorithmic Trading"),
+  tags: ("Rust", "Python", "Pandas", "MetaTrader 5", "Algorithmic Trading"),
 )
 
 #cv-entry(
@@ -38,10 +46,12 @@
   ),
   location: [Panama],
   description: list(
-    [Maintained infrastructure for cashless payment system in a remote jungle location],
-    [Deployed high-availability Proxmox cluster for local CRM system],
-    [Managed network infrastructure and coordinated volunteer shifts],
-    [Ensured 24/7 operation of POS stations under challenging conditions],
+    [Designed and maintained critical cashless payment system infrastructure in
+    remote jungle environment with limited connectivity and power constraints],
+    [Deployed and administered high-availability Proxmox virtualization cluster
+    for CRM and point-of-sale systems, ensuring business continuity],
+    [Architected network infrastructure and managed technical volunteer teams to
+    maintain 24/7 operations under challenging environmental conditions],
   ),
   tags: ("Proxmox", "Infrastructure", "Networking", "Volunteer"),
 )

@@ -33,5 +33,5 @@
 #cv-skill-with-level(
   type: [],
   level: 2,
-  info: [Spanish (Used to be better)],
+  info: [Spanish (Used to get around)],
 )

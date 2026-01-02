@@ -34,7 +34,6 @@ just open      # Compile and open in browser
 │   ├── certificates.typ
 │   └── publications.typ
 └── assets/
-    ├── fonts/          # Static font files
     ├── avatar.jpg      # Profile photo
     └── logos/          # Organization logos
 #+end_example

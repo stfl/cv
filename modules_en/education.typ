@@ -10,7 +10,7 @@
   date: [2018],
   location: [Vienna, Austria],
   description: list(
-    [Specialized in embedded systems and real-time computing],
+    [Specialization: Embedded Systems and Real-Time Computing],
   ),
 )
 
@@ -25,8 +25,8 @@
   title: [Electronics Engineering],
   society: [HTL Hollabrunn],
   date: [2009],
-  location: [Hollabrunn],
+  location: [Hollabrunn, Austria],
   description: list(
-    [Recipient of the OVE Award for the final project],
+    [Recipient of the OVE Award (Austrian Electrotechnical Association) for outstanding final thesis project],
   ),
 )
