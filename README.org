@@ -63,40 +63,12 @@ All personal information and layout settings are in =metadata.toml=:
 :CUSTOM_ID: fonts
 :END:
 
-Typst does not support variable fonts. You must download *static* font versions
-and place them in =assets/fonts/=.
-~CAUSION~: Fonts need to be vendored into the repository
+The template requires several fonts. Install the following fonts on your system
+or use the nix devShell which installs the fonts already
 
-** Expected Structure
-
-#+begin_example
-assets/fonts/
-├── Roboto/
-│   └── static/
-│       ├── Roboto-Regular.ttf
-│       ├── Roboto-Bold.ttf
-│       └── ...
-├── SourceSans3/
-│   └── static/
-│       ├── SourceSans3-Regular.ttf
-│       ├── SourceSans3-Bold.ttf
-│       └── ...
-└── FontAwesome/
-    └── otfs/
-        ├── Font Awesome 6 Free-Regular-400.otf
-        ├── Font Awesome 6 Free-Solid-900.otf
-        └── Font Awesome 6 Brands-Regular-400.otf
-#+end_example
-
-** Justfile Configuration
-
-Font paths are configured in =justfile=:
-
-#+begin_src just
-font_paths := "--font-path assets/fonts/Roboto/static --font-path assets/fonts/SourceSans3/static --font-path assets/fonts/FontAwesome/otfs/"
-#+end_src
-
-To add additional fonts, append another =--font-path= entry.
+- Source Sans 3 (body text)
+- Roboto (headers)
+- Font Awesome (icons)
 
 * Multi-language Support
 

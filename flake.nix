@@ -10,22 +10,22 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        fonts = [
+          pkgs.source-sans
+          pkgs.roboto
+          pkgs.font-awesome
+        ];
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            typst
-            just
+          buildInputs = [
+            pkgs.typst
+            pkgs.just
+          ] ++ fonts;
 
-            # Fonts
-            source-sans
-            roboto
-            font-awesome
-          ];
-
-          shellHook = ''
-            export TYPST_FONT_PATHS="${pkgs.source-sans}/share/fonts/opentype:${pkgs.roboto}/share/fonts/truetype:${pkgs.font-awesome}/share/fonts/opentype"
-          '';
+          FONTCONFIG_FILE = pkgs.makeFontsConf {
+            fontDirectories = fonts;
+          };
         };
       });
 }
