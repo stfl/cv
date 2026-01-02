@@ -1,0 +1,43 @@
+name: Build and Release CV
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Get commit date
+        id: date
+        run: |
+          COMMIT_DATE=$(git show -s --format=%cs ${{ github.sha }})
+          echo "date=$COMMIT_DATE" >> $GITHUB_OUTPUT
+
+      - name: Build CV
+        run: |
+          nix develop --command just compile
+
+      - name: Rename PDF
+        run: |
+          mv cv.pdf ${{ steps.date.outputs.date }}-Stefan-Lendl-CV.pdf
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.date.outputs.date }}
+          name: CV ${{ steps.date.outputs.date }}
+          files: ${{ steps.date.outputs.date }}-Stefan-Lendl-CV.pdf
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
