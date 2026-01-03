@@ -35,6 +35,15 @@ jobs:
         run: |
           mv cv.pdf ${{ steps.date.outputs.date }}-Stefan-Lendl-CV.pdf
 
+      - name: Delete existing release if same date
+        run: |
+          TAG="${{ steps.date.outputs.date }}"
+          # Delete release and tag if they exist (will fail silently if they don't)
+          gh release delete "$TAG" --yes 2>/dev/null || true
+          git push origin --delete "$TAG" || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
