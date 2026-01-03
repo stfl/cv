@@ -4,13 +4,18 @@
 #cv-section("Skills")
 
 #cv-skill(
+  type: [Consulting & Leadership],
+  info: [Requirements Engineering #h-bar() Software Architecture #h-bar() Technical Due Diligence #h-bar() Stakeholder Management #h-bar() Team Leadership & Mentoring],
+)
+
+#cv-skill(
   type: [Programming],
   info: [Rust #h-bar() Python #h-bar() C #h-bar() C++],
 )
 
 #cv-skill(
   type: [Tech Stack],
-  info: [Embedded Linux #h-bar() Yocto #h-bar() Django #h-bar() Pandas #h-bar() DevOps #h-bar() Kubernetes],
+  info: [Embedded Linux #h-bar() Yocto #h-bar() NixOS #h-bar() Django #h-bar() Pandas #h-bar() DevOps #h-bar() Kubernetes],
 )
 
 #cv-skill(

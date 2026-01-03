@@ -3,20 +3,20 @@
 #cv-section("Professional Experience")
 
 #cv-entry(
-  title: [Embedded Rust Software Engineer],
+  title: [Senior Software Engineer (Contract)],
   society: [ÖBB (Austrian Federal Railways)],
-  date: [2024 - Present],
+  date: [Oct 2024 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Architected and led the production deployment of a mission-critical
-    embedded Linux (Yocto) system, transitioning multiple Rust services from
-    proof-of-concept to a secure, feature-complete railway operations platform],
-    [Designed and implemented safety-compliant Rust services for railway control
-    systems, ensuring deterministic behavior and fault tolerance in accordance
-    with industry standards],
+    [Delivered production-ready embedded Linux platform for mission-critical
+    railway control operations, transitioning Rust-based proof-of-concept to
+    certified railway operations system ensuring deterministic real-time
+    performance and fault tolerance],
+    [Architected and implemented safety-compliant Rust services meeting railway
+    industry standards, enabling secure and reliable railway control operations],
     [Established embedded Rust development practices and mentored engineering
-    team on zero-cost abstractions, memory safety, and real-time system design
-    patterns],
+    team on safety-critical system design, advancing team capability in
+    modern systems programming],
   ),
   tags: ("Rust", "Embedded Linux", "Yocto"),
 )
@@ -61,21 +61,23 @@
   date: [Nov 2022 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Delivered end-to-end technical solutions across backend services, cloud
-    infrastructure, and embedded systems for diverse client engagements],
-    [Architected scalable backend systems and infrastructure automation
-    solutions, adapting to evolving business requirements and technical
-    constraints],
-    [Provided technical consulting on system design, technology selection, and
-    best practices for software architecture and development processes],
+    [Delivering embedded systems development and consulting services for
+    industrial and transportation sector clients, including mission-critical
+    railway operations platform (see ÖBB contract above)],
+    [Providing ongoing infrastructure maintenance, monitoring, and proactive
+    issue resolution for production web applications and server environments],
+    [Managing hosting infrastructure and technical operations for smaller client
+    engagements, ensuring reliability and security],
+    [Offering technical consulting on system architecture, technology selection,
+    and best practices for embedded systems and backend development],
   ),
-  tags: ("Consulting", "Backend", "Infrastructure"),
+  tags: ("Consulting", "Embedded Systems", "Infrastructure", "Backend", "DevOps", "Rust"),
 )
 
 #cv-entry(
   title: [Software Engineer and Architect],
   society: [pulswerk],
-  date: [Nov 2019 - Nov 2022],
+  date: [Nov 2019 - Present],
   location: [Vienna, Austria],
   description: list(
     [Architected and led development of Django-based web applications,
@@ -85,7 +87,8 @@
     disruption],
     [Introduced agile methodologies and technical practices including sprint
     planning, code reviews, and continuous integration, improving team velocity
-    and code quality],
+      and code quality],
+    [maintenance contract since Nov 2022],
   ),
   tags: ("Django", "Python", "Agile"),
 )

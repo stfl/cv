@@ -65,6 +65,7 @@ language = "en"
         github = "stfl"
         phone = "+43 660 737 2224"
         email = "stefan@lendl.dev"
+        # homepage = "lendl.dev"
         linkedin = "stfl"
         location = "Vienna, Austria"
 
@@ -72,6 +73,6 @@ language = "en"
 # i.e. [[lang.ru]]
 # each section must contains the following fields
 [lang.en]
-    header_quote = "Principal Software Architect specializing in embedded Linux and Rust systems"
+    header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
     cv_footer = "Curriculum vitae"
     letter_footer = "Cover letter"

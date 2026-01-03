@@ -10,9 +10,9 @@
   location: [Vienna, Austria],
 )
 
-#cv-honor(
-  date: [2009],
-  title: [OVE Award for HTL Thesis],
-  issuer: [Austrian Electrotechnical Association (OVE)],
-  location: [Vienna, Austria],
-)
+// #cv-honor(
+//   date: [2009],
+//   title: [OVE Award for HTL Thesis],
+//   issuer: [Austrian Electrotechnical Association (OVE)],
+//   location: [Vienna, Austria],
+// )
