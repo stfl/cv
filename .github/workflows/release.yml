@@ -31,7 +31,7 @@ jobs:
 
       - name: Rename PDF
         run: |
-          mv cv.pdf ${COMMIT_DATE}-Stefan-Lendl-CV.pdf
+          mv cv.pdf Stefan-Lendl-CV.pdf
 
       - name: Delete existing release if same date
         run: |
@@ -46,7 +46,7 @@ jobs:
         with:
           tag_name: ${{ env.COMMIT_DATE }}
           name: CV ${{ env.COMMIT_DATE }}
-          files: ${{ env.COMMIT_DATE }}-Stefan-Lendl-CV.pdf
+          files: Stefan-Lendl-CV.pdf
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
