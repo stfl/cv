@@ -44,3 +44,17 @@ jobs:
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup old releases
+        run: |
+          # List all releases, skip the ${keep} most recent, delete the rest
+          gh release list --limit 100 --json tagName --jq ".[${keep}:][].tagName" | \
+          while read tag; do
+            if [ -n "$tag" ]; then
+              echo "Deleting release: $tag"
+              gh release delete "$tag" --yes
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          keep: 5
