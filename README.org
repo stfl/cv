@@ -79,3 +79,14 @@ language = "en"  # Uses modules_en/
 
 Create corresponding module directories (=modules_de/=, =modules_fr/=, etc.) with translated content.
 
+* Github Action and Releases
+
+The Github action is set up so that it creates a release on every push on ~main~
+but only a single release per day to avoid noise if there are several pushes in
+a single edit session on one day.
+
+Old releases are deleted because we don't need old CVs.
+
+The permanent link for the latest release is:
+
+https://github.com/stfl/cv/releases/latest/download/Stefan-Lendl-CV.pdf
