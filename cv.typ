@@ -24,7 +24,7 @@
 #import-modules((
   "professional",
   "projects",
-  "certificates",
+  // "certificates",
   // "publications",
   "education",
   "skills",
