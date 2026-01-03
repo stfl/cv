@@ -16,16 +16,14 @@ jobs:
         with:
           lfs: true
 
+      - name: Get commit date and store in env
+        run: |
+          echo "COMMIT_DATE=$(git show -s --format=%cs ${{ github.sha }})" >> $GITHUB_ENV
+
       - name: Install Nix
         uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-
-      - name: Get commit date
-        id: date
-        run: |
-          COMMIT_DATE=$(git show -s --format=%cs ${{ github.sha }})
-          echo "date=$COMMIT_DATE" >> $GITHUB_OUTPUT
 
       - name: Build CV
         run: |
@@ -33,23 +31,22 @@ jobs:
 
       - name: Rename PDF
         run: |
-          mv cv.pdf ${{ steps.date.outputs.date }}-Stefan-Lendl-CV.pdf
+          mv cv.pdf ${COMMIT_DATE}-Stefan-Lendl-CV.pdf
 
       - name: Delete existing release if same date
         run: |
-          TAG="${{ steps.date.outputs.date }}"
           # Delete release and tag if they exist (will fail silently if they don't)
-          gh release delete "$TAG" --yes 2>/dev/null || true
-          git push origin --delete "$TAG" || true
+          gh release delete "$COMMIT_DATE" --yes 2>/dev/null || true
+          git push origin --delete "$COMMIT_DATE" || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.date.outputs.date }}
-          name: CV ${{ steps.date.outputs.date }}
-          files: ${{ steps.date.outputs.date }}-Stefan-Lendl-CV.pdf
+          tag_name: ${{ env.COMMIT_DATE }}
+          name: CV ${{ env.COMMIT_DATE }}
+          files: ${{ env.COMMIT_DATE }}-Stefan-Lendl-CV.pdf
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
