@@ -1,26 +1,20 @@
-// Imports
 #import "@preview/brilliant-cv:3.1.1": cv-section, cv-skill, cv-skill-with-level, h-bar
 
 #cv-section("Skills")
 
 #cv-skill(
-  type: [Consulting & Leadership],
-  info: [Requirements Engineering #h-bar() Software Architecture #h-bar() Technical Due Diligence #h-bar() Stakeholder Management #h-bar() Team Leadership & Mentoring],
+  type: [Core Competencies],
+  info: [System Architecture #h-bar() Requirements Engineering #h-bar() Technical Leadership #h-bar() Embedded Systems #h-bar() Bare-Metal Infrastructure],
 )
 
 #cv-skill(
   type: [Programming],
-  info: [Rust #h-bar() Python #h-bar() C #h-bar() C++],
+  info: [Rust #h-bar() C++ #h-bar() C #h-bar() Python #h-bar() Bash/Shell],
 )
 
 #cv-skill(
-  type: [Tech Stack],
-  info: [Embedded Linux #h-bar() Yocto #h-bar() NixOS #h-bar() Django #h-bar() Pandas #h-bar() DevOps #h-bar() Kubernetes],
-)
-
-#cv-skill(
-  type: [Expertise],
-  info: [Software Architecture #h-bar() Embedded Systems #h-bar() Real-time Computing #h-bar() Requirements Management #h-bar() Team Lead],
+  type: [Tech Stack & OS],
+  info: [Embedded Linux #h-bar() Yocto / OpenEmbedded #h-bar() Proxmox VE #h-bar() Dokku / Debian #h-bar() GStreamer #h-bar() InfluxDB #h-bar() Kubernetes (Basic)],
 )
 
 #cv-skill-with-level(
@@ -33,10 +27,4 @@
   type: [],
   level: 4,
   info: [English (Professional)],
-)
-
-#cv-skill-with-level(
-  type: [],
-  level: 2,
-  info: [Spanish (Used to get around)],
 )

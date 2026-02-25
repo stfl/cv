@@ -1,6 +1,4 @@
-// Imports
 #import "@preview/brilliant-cv:3.1.1": cv-section, cv-entry
-
 
 #cv-section("Projects & Associations")
 
@@ -10,33 +8,23 @@
   date: [Feb 2023 - Jun 2024],
   location: [Vienna, Austria],
   description: list(
-    [Led monthly technical meetups as primary organizer, growing Rust Vienna from
-    200 to 500+ members through curated speaker programs and community building],
-    [Facilitated knowledge sharing on advanced Rust topics including embedded
-    systems, async runtime design, and production deployment patterns],
-    [Continuing as active community member, providing technical mentorship and
-    occasional speaking engagements],
+    [Coordinated regular technical meetups, successfully growing the local Rust community from 200 to over 500 members],
+    [Managed speaker curation, event logistics, and delivered a technical presentation on the Rust `Deref` trait],
   ),
-  tags: ("Rust", "Community", "Leadership", "Public Speaking"),
+  tags: ("Rust", "Community Leadership", "Event Coordination", "Public Speaking"),
 )
 
-// Personal project removed for professional consulting focus
-// #cv-entry(
-//   title: [Forex Backtest Framework],
-//   society: [Personal Project],
-//   date: [2020 - 2021],
-//   location: [Vienna, Austria],
-//   description: list(
-//     [Architected and implemented high-performance backtest engine in Rust for
-//     MetaTrader 5 trading strategy optimization, enabling rapid iteration on
-//     algorithmic trading models],
-//     [Designed RESTful API for programmatic backtest execution, parameter
-//     optimization, and automated result aggregation],
-//     [Built Python-based analysis pipeline for statistical performance
-//     evaluation, risk metrics calculation, and strategy comparison],
-//   ),
-//   tags: ("Rust", "Python", "Pandas", "MetaTrader 5", "Algorithmic Trading"),
-// )
+#cv-entry(
+  title: [Forex Backtesting Infrastructure & Automation],
+  society: [Personal Project],
+  date: [2020 - 2021],
+  location: [Vienna, Austria],
+  description: list(
+    [Provisioned a physical rack server and deployed a custom bare-metal Proxmox virtualization environment],
+    [Architected an automated MetaTrader backtesting pipeline, utilizing Rust and Python for execution control and data parsing to enable rapid iteration on algorithmic trading models],
+  ),
+  tags: ("Proxmox", "Rust", "Python", "Infrastructure"),
+)
 
 #cv-entry(
   title: [On-Site Infrastructure Consultant],
@@ -45,11 +33,10 @@
     [May 2017 - Apr 2018],
     [Oct 2019 - Mar 2020],
   ),
-  location: [Panama],
+  location: [Panama (Remote Beach)],
   description: list(
-    [Delivered mission-critical cashless payment infrastructure supporting business operations in remote environment with extreme connectivity and power constraints],
-    [Architected and deployed high-availability Proxmox virtualization cluster for CRM and point-of-sale systems, ensuring zero-downtime business continuity],
-    [Led distributed technical teams maintaining 24/7 operations, demonstrating leadership and problem-solving under challenging resource limitations],
+    [Architected a resilient 2-node Proxmox cluster in an off-grid shipping container for a cashless POS system, guaranteeing continuous business operations in an extreme, low-resource environment],
+    [Managed severe physical infrastructure constraints, wiring UPS systems to diesel generators and handling manual failovers during frequent outages],
   ),
-  tags: ("Proxmox", "Infrastructure", "High Availability", "Leadership", "Networking"),
+  tags: ("Proxmox", "Off-Grid Infrastructure", "Networking", "Crisis Management", "Resilience"),
 )

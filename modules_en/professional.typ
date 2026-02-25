@@ -8,89 +8,50 @@
   date: [Oct 2024 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Delivered production-ready embedded Linux platform for mission-critical
-    railway control operations, transitioning Rust-based proof-of-concept to
-    certified railway operations system ensuring deterministic real-time
-    performance and fault tolerance],
-    [Architected and implemented safety-compliant Rust services meeting railway
-    industry standards, enabling secure and reliable railway control operations],
-    [Established embedded Rust development practices and mentored engineering
-    team on safety-critical system design, advancing team capability in
-    modern systems programming],
+    [Executed a comprehensive architectural overhaul of the railway's edge measurement devices, migrating a legacy Yocto Linux distribution to the latest LTS release and completely modernizing the core system],
+    [Integrated a fail-proof A/B OTA firmware update mechanism at the bootloader level, enabling seamless remote updates, full image control, and direct integration with a ThingsBoard device management platform],
+    [Architected a performant Rust application to upload local telemetry data over a highly unreliable network connection, ensuring zero data loss and continuous monitoring of critical metrics],
   ),
-  tags: ("Rust", "Embedded Linux", "Yocto"),
+  tags: ("Rust", "Embedded Linux", "Yocto", "Bootloader"),
 )
 
 #cv-entry(
-  title: [Embedded Software Architect],
+  title: [Embedded Software Architect & Technical Lead],
   society: [3DataX (Client: TTTech)],
   location: [Vienna, Austria],
   date: [May 2024 - Dec 2024],
   description: list(
-    [Led cross-functional engineering team in developing cloud-to-vehicle remote
-    command infrastructure for automotive system, defining software architecture
-    for the embedded device and ensuring the technical roadmap],
-    [Architected modular C++ service framework for safety-critical automotive
-    applications, ensuring AUTOSAR compliance and performance requirements],
-    [Designed and implemented custom Yocto-based Linux distribution with
-    hardened security posture],
-    [Drove requirements engineering process and stakeholder alignment across
-    engineering, product, and customer teams],
+    [Led a cross-functional engineering team, taking full ownership of requirements and system architecture],
+    [Architected a low-level C++ serialization protocol bridging remote control messages to the vehicle's internal vehicle bus, enabling secure, real-time cloud-to-vehicle command execution],
+    [Actively contributed to the hands-on development and maintenance of a custom Yocto Linux distribution],
   ),
-  tags: ("C++", "Yocto", "Automotive", "Requirements Engineering", "Leadership"),
+  tags: ("C++", "Embedded Linux", "Yocto", "Requirements Engineering", "Technical Leadership"),
 )
 
 #cv-entry(
-  title: [Rust Software Engineer],
+  title: [Software Engineer],
   society: [Proxmox],
   date: [Sep 2023 - Apr 2024],
   location: [Vienna, Austria],
   description: list(
-    [Designed and implemented features for Proxmox's Software Defined Networking
-    stack, enhancing network isolation and performance in virtualized
-    environments],
-    [Contributed to open-source ecosystem through code reviews, documentation
-    improvements, and community support],
+    [Identified, debugged, and successfully upstreamed a kernel module bug fix to the OpenZFS project],
+    [Developed full-stack features for Proxmox Backup Server, integrating a JS frontend with a Rust backend],
+    [Contributed to the Proxmox VE SDN stack in Perl and provided Tier-3 enterprise infrastructure support],
   ),
-  tags: ("Rust", "Perl", "Networking", "Virtualization"),
+  tags: ("Rust", "Perl", "ZFS", "Enterprise Support"),
 )
 
 #cv-entry(
-  title: [Freelance Software Engineer],
-  society: [Self-employed],
-  date: [Nov 2022 - Present],
-  location: [Vienna, Austria],
-  description: list(
-    [Delivering embedded systems development and consulting services for
-    industrial and transportation sector clients, including mission-critical
-    railway operations platform (see ÖBB contract above)],
-    [Providing ongoing infrastructure maintenance, monitoring, and proactive
-    issue resolution for production web applications and server environments],
-    [Managing hosting infrastructure and technical operations for smaller client
-    engagements, ensuring reliability and security],
-    [Offering technical consulting on system architecture, technology selection,
-    and best practices for embedded systems and backend development],
-  ),
-  tags: ("Consulting", "Embedded Systems", "Infrastructure", "Backend", "DevOps", "Rust"),
-)
-
-#cv-entry(
-  title: [Software Engineer and Architect],
+  title: [Software Engineer & Architect (Employee $arrow.r$ Freelance)],
   society: [pulswerk],
   date: [Nov 2019 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Architected and led development of Django-based web applications,
-    establishing coding standards, testing practices, and CI/CD pipelines],
-    [Designed integration architecture connecting legacy PHP systems with modern
-    Django applications, ensuring data consistency and minimal service
-    disruption],
-    [Introduced agile methodologies and technical practices including sprint
-    planning, code reviews, and continuous integration, improving team velocity
-      and code quality],
-    [maintenance contract since Nov 2022],
+    [Built a full-stack Django web application from scratch, seamlessly integrating modern Python with legacy PHP systems],
+    [Deployed the initial application to a custom Kubernetes cluster before pragmatically scaling back to a self-hosted Dokku PaaS, optimizing for long-term maintainability and drastically reducing operational overhead],
+    [Modernized engineering culture by introducing Git version control, CI/CD pipelines, and structured project management],
   ),
-  tags: ("Django", "Python", "Agile"),
+  tags: ("Django", "Python", "Kubernetes", "Dokku", "PHP", "Requirements Engineering"),
 )
 
 #cv-entry(
@@ -99,29 +60,21 @@
   date: [Oct 2014 - Oct 2019],
   location: [Vienna, Austria],
   description: list(
-    [Designed and implemented custom embedded Linux distributions using
-    Yocto/OpenEmbedded, optimizing for performance, security, and minimal
-    footprint],
-    [Developed safety-critical real-time video streaming solutions using
-    GStreamer for aerospace and defense applications, ensuring low-latency and
-    high reliability],
-    [Collaborated with hardware engineers on board bring-up, device driver
-    development, and system integration for ARM-based platforms],
-    [Developed a Rust-based communcation agent between two embedded devices],
+    [Developed custom Yocto BSPs for i.MX platforms, porting camera drivers and optimizing at the kernel level],
+    [Engineered low-latency GStreamer video streaming pipelines for i.MX and Nvidia Jetson target hardware],
+    [Built a robust Rust-based API (ZeroMQ/Protobuf) to dynamically configure underlying Linux components],
   ),
-  tags: ("Embedded Linux", "Yocto", "C/C++", "Rust", "GStreamer", "Safety-critical"),
+  tags: ("Embedded Linux", "Yocto", "BSP", "GStreamer", "Rust", "C/C++"),
 )
 
 #cv-entry(
-  title: [Embedded Software Engineer],
+  title: [Technical Support & Embedded Software Engineer],
   society: [E-Control Austria],
   date: [Jun 2010 - Sep 2013],
   location: [Vienna, Austria],
   description: list(
-    [Developed firmware enhancements for smart metering devices, implementing
-    energy measurement protocols and secure data communication features],
-    [Contributed to embedded system testing and validation procedures, ensuring
-    compliance with Austrian energy metering regulations],
+    [Extended C-based firmware to develop and evaluate a Smart Metering Proof of Concept (PoC)],
+    [Provided direct technical support for secure client certificate installations and system configurations],
   ),
-  tags: ("Firmware", "C", "Embedded", "Smart Metering"),
+  tags: ("C", "Technical Support"),
 )
