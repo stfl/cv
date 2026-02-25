@@ -8,14 +8,18 @@ Typst-based CV and cover letter using the [brilliant-cv](https://typst.app/unive
 
 ## Build Commands
 
+All commands **must** be run through the Nix devShell to ensure correct tools, fonts, and environment:
+
 ```bash
-just              # Compile CV to PDF (default)
-just check        # Type-check without output
-just watch        # Watch mode with auto-recompile
-just open         # Compile and open PDF
-just letter       # Compile cover letter
-just watch-letter # Watch cover letter
+nix develop --command just              # Compile CV to PDF (default)
+nix develop --command just check        # Type-check without output
+nix develop --command just watch        # Watch mode with auto-recompile
+nix develop --command just open         # Compile and open PDF
+nix develop --command just letter       # Compile cover letter
+nix develop --command just watch-letter # Watch cover letter
 ```
+
+**Important**: Always use `nix develop --command <cmd>` to execute commands. Do not run `just` or `typst` directly outside the Nix shell.
 
 ## Architecture
 
