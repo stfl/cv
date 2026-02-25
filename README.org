@@ -3,7 +3,7 @@
 
 * Overview
 
-A professional CV and cover letter built with [[https://typst.app][Typst]] using the [[https://typst.app/universe/package/brilliant-cv/][brilliant-cv]] template.
+A professional CV and cover letter built with [[https://typst.app][Typst]] using the [[https://typst.app/universe/package/brilliant-cv/][brilliant-cv]] template for the CV and [[https://typst.app/universe/package/letter-pro/][letter-pro]] (DIN 5008) for the cover letter.
 
 * Requirements
 
@@ -23,10 +23,11 @@ just open      # Compile and open in browser
 
 #+begin_example
 .
-├── cv.typ              # Main CV document
-├── letter.typ          # Cover letter
-├── metadata.toml       # Personal info, layout, colors
-├── modules_en/         # English content modules
+├── cv.typ                       # Main CV document
+├── letter.typ                   # Cover letter template
+├── letter-content.example.typ   # Example letter content (copy to letter-content.typ)
+├── metadata.toml                # Personal info, layout, colors
+├── modules_en/                  # English content modules
 │   ├── education.typ
 │   ├── professional.typ
 │   ├── skills.typ
@@ -34,8 +35,8 @@ just open      # Compile and open in browser
 │   ├── certificates.typ
 │   └── publications.typ
 └── assets/
-    ├── avatar.jpg      # Profile photo
-    └── logos/          # Organization logos
+    ├── avatar.jpg               # Profile photo
+    └── logos/                   # Organization logos
 #+end_example
 
 * Configuration
@@ -56,6 +57,32 @@ All personal information and layout settings are in =metadata.toml=:
 | =just open=         | Compile and open PDF           |
 | =just letter=       | Compile cover letter           |
 | =just watch-letter= | Watch cover letter             |
+
+* Cover Letter
+
+The cover letter uses [[https://typst.app/universe/package/letter-pro/][letter-pro]] with DIN 5008 formatting. Sender info is pulled from =metadata.toml=, while per-letter content is kept in =letter-content.typ= (gitignored). To set up:
+
+#+begin_src bash
+cp letter-content.example.typ letter-content.typ
+#+end_src
+
+Edit =letter-content.typ= with recipient, subject, language, and the letter body:
+
+#+begin_src typst
+#let language = "de"  // optional, defaults to "en"
+
+#let recipient = [
+  ACME Corp\
+  123 Main St\
+  1010 Vienna
+]
+#let subject = "Application: Software Engineer"
+
+Dear Hiring Manager,
+...
+#+end_src
+
+Then compile with =just letter=.
 
 * Fonts
 :PROPERTIES:

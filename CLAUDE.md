@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Typst-based CV and cover letter using the [brilliant-cv](https://typst.app/universe/package/brilliant-cv/) template (v3.1.2). Personal data is stored in `metadata.toml`, with language-specific content modules in `modules_<lang>/` directories.
+Typst-based CV and cover letter using [brilliant-cv](https://typst.app/universe/package/brilliant-cv/) (v3.1.2) for the CV and [letter-pro](https://typst.app/universe/package/letter-pro/) (v3.0.0, DIN 5008) for the cover letter. Personal data is stored in `metadata.toml`, with language-specific content modules in `modules_<lang>/` directories.
 
 ## Build Commands
 
@@ -26,7 +26,9 @@ nix develop --command just watch-letter # Watch cover letter
 ```
 metadata.toml          # All configuration: personal info, layout, colors, fonts, language settings
 cv.typ                 # Main CV entry point - imports metadata and modules
-letter.typ             # Cover letter entry point
+letter.typ             # Cover letter template (letter-pro, DIN 5008)
+letter-content.typ     # Per-letter content: recipient, subject, body (gitignored)
+letter-content.example.typ  # Example content file (copy to letter-content.typ)
 modules_en/            # English content modules (active)
   ├── education.typ
   ├── professional.typ
@@ -44,6 +46,7 @@ assets/
 - **Language switching**: Set `language = "en"` in metadata.toml; modules load from `modules_<lang>/`
 - **CV entries**: Use `cv-entry()` from brilliant-cv with `title`, `society`, `date`, `location`, `description`, `tags`
 - **Skills**: Use `cv-skill()` or `cv-skill-with-level()` with `h-bar()` separator
+- **Cover letter**: `letter.typ` is the template (committed); `letter-content.typ` holds per-letter content (gitignored). Content file exports `recipient` (content block), `subject` (string), and optionally `language` (string, defaults to `"en"`). Sender info comes from `metadata.toml` under `[personal.info]` and `[personal.letter]`
 
 ## metadata.toml Structure
 
@@ -56,6 +59,9 @@ assets/
   first_name = "..."
   [personal.info]
     github, email, phone, linkedin, location
+
+  [personal.letter]
+    address = ["Street", "City"]  # used by letter.typ
 
 [lang.en]
   header_quote = "..."

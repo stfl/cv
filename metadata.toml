@@ -78,4 +78,3 @@ address = ["Jurekgasse 25/30", "1150 Vienna"]
 [lang.en]
 header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
 cv_footer = "Curriculum vitae"
-letter_footer = "Cover letter"
