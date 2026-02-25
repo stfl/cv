@@ -1,4 +1,4 @@
-#import "@preview/brilliant-cv:3.1.1": cv-section, cv-entry, cv-honor
+#import "@preview/brilliant-cv:3.1.1": cv-section, cv-honor
 
 #cv-section("Education & Certificates")
 
@@ -8,30 +8,29 @@
   issuer: [Exin],
 )
 
-#cv-entry(
-  title: [MSc in Computer Engineering (Embedded Systems Focus)],
-  society: [TU Vienna],
+#cv-honor(
+  title: [MSc in Computer Engineering (Embedded Systems)],
   date: [2018],
+  issuer: [TU Vienna],
   location: [Vienna, Austria],
-  description: list(
-    [Master's Thesis: Developed an SCTP protocol extension in the FreeBSD kernel and a corresponding GStreamer plugin for real-time multimedia streaming],
-  ),
 )
+#pad(left: 16% + 10pt, text(size: 8pt)[
+  Thesis: SCTP protocol extension in code based on FreeBSD kernel stack & GStreamer plugin])
+#v(-6pt)
 
-#cv-entry(
+#cv-honor(
   title: [BSc in Computer Engineering],
-  society: [TU Vienna],
   date: [2013],
+  issuer: [TU Vienna],
   location: [Vienna, Austria],
-  description: none,
 )
 
-#cv-entry(
+#cv-honor(
   title: [Electronics Engineering],
-  society: [HTL Hollabrunn],
   date: [2009],
+  issuer: [HTL Hollabrunn],
   location: [Hollabrunn, Austria],
-  description: list(
-    [Awarded the OVE Prize (Austrian Electrotechnical Association) for an outstanding final thesis project],
-  ),
 )
+#pad(left: 16% + 10pt, text(size: 8pt)[
+  OVE Prize (Austrian Electrotechnical Association) for outstanding final thesis])
+#v(-6pt)
