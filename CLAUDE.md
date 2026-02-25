@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Typst-based CV and cover letter using the [brilliant-cv](https://typst.app/universe/package/brilliant-cv/) template (v3.1.1). Personal data is stored in `metadata.toml`, with language-specific content modules in `modules_<lang>/` directories.
+Typst-based CV and cover letter using the [brilliant-cv](https://typst.app/universe/package/brilliant-cv/) template (v3.1.2). Personal data is stored in `metadata.toml`, with language-specific content modules in `modules_<lang>/` directories.
 
 ## Build Commands
 
