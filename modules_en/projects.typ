@@ -34,7 +34,7 @@
   ),
   location: [Panama (Remote Beach)],
   description: list(
-    [Architected a resilient 2-node Proxmox cluster in an off-grid shipping container for a cashless POS system, guaranteeing continuous business operations in an extreme, low-resource environment],
+    [Architected a multi-node Proxmox cluster in an off-grid shipping container for a cashless POS system, guaranteeing continuous business operations in an extreme, low-resource environment],
     [Managed severe physical infrastructure constraints, wiring UPS systems to diesel generators and handling manual failovers during frequent outages],
   ),
   tags: ("Proxmox", "Off-Grid Infrastructure", "Networking", "Crisis Management", "Resilience"),
