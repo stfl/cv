@@ -1,4 +1,3 @@
-// Imports
 #import "@preview/brilliant-cv:3.1.2": letter
 #let metadata = toml("./metadata.toml")
 #let letter-language = sys.inputs.at("language", default: none)
@@ -8,15 +7,14 @@
   metadata
 }
 
-
 #show: letter.with(
   metadata,
-  sender-address: "Your Address Here",
+  sender-address: metadata.personal.letter.address.join(linebreak()),
+  date: datetime.today().display(),
+  signature: image("assets/signature.png"),
   recipient-name: "Company Name Here",
   recipient-address: "Company Address Here",
-  date: datetime.today().display(),
   subject: "Subject: Hey!",
-  signature: image("assets/signature.png"),
 )
 
 Dear Hiring Manager,

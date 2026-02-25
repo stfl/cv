@@ -1,17 +1,20 @@
+# Unset Nix's SOURCE_DATE_EPOCH so typst's datetime.today() returns the real date
+typst := "env -u SOURCE_DATE_EPOCH typst"
+
 # Default recipe
 default: compile
 
 # Type-check the CV without producing output
 check:
-    typst compile cv.typ /dev/null -f pdf
+    {{ typst }} compile cv.typ /dev/null -f pdf
 
 # Compile CV to PDF
 compile:
-    typst compile cv.typ
+    {{ typst }} compile cv.typ
 
 # Watch for changes and recompile
 watch:
-    typst watch cv.typ
+    {{ typst }} watch cv.typ
 
 # Open PDF in browser
 open: compile
@@ -19,8 +22,8 @@ open: compile
 
 # Compile cover letter
 letter:
-    typst compile letter.typ
+    {{ typst }} compile letter.typ
 
 # Watch cover letter
 watch-letter:
-    typst watch letter.typ
+    {{ typst }} watch letter.typ

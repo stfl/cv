@@ -5,74 +5,77 @@
 language = "en"
 
 [layout]
-    # Optional values: skyblue, red, nephritis, concrete, darknight
-    # You can also use a custom color by hex code i.e. "#1E90FF"
-    awesome_color = "#2968ac"
+# Optional values: skyblue, red, nephritis, concrete, darknight
+# You can also use a custom color by hex code i.e. "#1E90FF"
+awesome_color = "#2968ac"
 
-    # Skips are for controlling the spacing between sections and entries
-    before_section_skip = "1pt"
-    before_entry_skip = "1pt"
-    before_entry_description_skip = "1pt"
+# Skips are for controlling the spacing between sections and entries
+before_section_skip = "1pt"
+before_entry_skip = "1pt"
+before_entry_description_skip = "1pt"
 
-    # Optional: sets paper size and margins. Possible values: a4 (default), us-letter
-    paper_size = "a4"
+# Optional: sets paper size and margins. Possible values: a4 (default), us-letter
+paper_size = "a4"
 
-    # Optional: sets the width of the right column of a cvEntry. If not set, values known to work well are used
-    #date_width = "3.6cm"
+# Optional: sets the width of the right column of a cvEntry. If not set, values known to work well are used
+#date_width = "3.6cm"
 
-    [layout.fonts]
-        regular_fonts = ["Source Sans 3"]
-        header_font = "Roboto"
+[layout.fonts]
+regular_fonts = ["Source Sans 3"]
+header_font = "Roboto"
 
-    [layout.header]
-        # Optional values: left, center, right
-        header_align = "left"
+[layout.header]
+# Optional values: left, center, right
+header_align = "left"
 
-        # Decide if you want to display profile photo or not
-        display_profile_photo = true
-        # Radius in % to clip profile photo at
-        profile_photo_radius = "50%"
-        info_font_size = "10pt"
+# Decide if you want to display profile photo or not
+display_profile_photo = true
+# Radius in % to clip profile photo at
+profile_photo_radius = "50%"
+info_font_size = "10pt"
 
-    [layout.entry]
-        # Decide if you want to put your company in bold or your position in bold
-        display_entry_society_first = true
+[layout.entry]
+# Decide if you want to put your company in bold or your position in bold
+display_entry_society_first = true
 
-        # Decide if you want to display organisation logo or not
-        display_logo = true
+# Decide if you want to display organisation logo or not
+display_logo = true
 
-    [layout.footer]
-        # Decide if you want to display page counter or not
-        display_page_counter = false
+[layout.footer]
+# Decide if you want to display page counter or not
+display_page_counter = false
 
-        # Decide if you want to display the footer or not
-        display_footer = true
+# Decide if you want to display the footer or not
+display_footer = true
 
 
 [inject]
-    # Decide if you want to inject AI prompt or not
-    inject_ai_prompt = false
+# Decide if you want to inject AI prompt or not
+inject_ai_prompt = false
 
-    # Decide if you want to inject keywords or not
-    inject_keywords = true
-    injected_keywords_list = ["Rust", "Embedded Linux", "Yocto", "C++", "Software Architecture", "DevOps"]
+# Decide if you want to inject keywords or not
+inject_keywords = true
+injected_keywords_list = ["Rust", "Embedded Linux", "Yocto", "C++", "Software Architecture", "DevOps", "NixOS"]
 
 [personal]
-    first_name = "Stefan"
-    last_name = "Lendl"
+first_name = "Stefan"
+last_name = "Lendl"
 
-    [personal.info]
-        github = "stfl"
-        phone = "+43 660 737 2224"
-        email = "stefan@lendl.dev"
-        # homepage = "lendl.dev"
-        linkedin = "stfl"
-        location = "Vienna, Austria"
+[personal.info]
+github = "stfl"
+phone = "+43 660 737 2224"
+email = "stefan@lendl.dev"
+homepage = "lendl.dev"
+linkedin = "stfl"
+location = "Vienna, Austria"
+
+[personal.letter]
+address = ["Jurekgasse 25/30", "1150 Vienna"]
 
 # add a new section if you want to include the language of your choice
 # i.e. [[lang.ru]]
 # each section must contains the following fields
 [lang.en]
-    header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
-    cv_footer = "Curriculum vitae"
-    letter_footer = "Cover letter"
+header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
+cv_footer = "Curriculum vitae"
+letter_footer = "Cover letter"
