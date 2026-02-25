@@ -9,7 +9,6 @@
   location: [Vienna, Austria],
   description: list(
     [Coordinated regular technical meetups, successfully growing the local Rust community from 200 to over 500 members],
-    [Managed speaker curation, event logistics, and delivered a technical presentation on the Rust `Deref` trait],
   ),
   tags: ("Rust", "Community Leadership", "Event Coordination", "Public Speaking"),
 )
