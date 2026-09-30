@@ -76,15 +76,14 @@ letter's date line prints 1980. Keep the wrapper on any new recipe.
 ## CI (`.github/workflows/release.yml`)
 
 Every push to `main` builds the CV with `nix develop --command just compile` and
-publishes `Stefan-Lendl-CV.pdf` as a GitHub release tagged with the commit date
-(`YYYY-MM-DD`). A second push the same day updates that release in place: the
-tag is force-moved to the new commit and the PDF replaced (`--clobber`), so the
-release keeps its ID and URL. A `concurrency` group cancels a running build when
-a newer push arrives. Only the 5 newest releases are kept; older ones are deleted
-together with their tags. The letter is never built in CI.
-
-Clones do not follow a force-moved tag on plain `git fetch`; use
-`git fetch --tags --force`.
+publishes `Stefan-Lendl-CV.pdf` as a GitHub release titled `CV YYYY-MM-DD`,
+tagged `YYYY-MM-DD-<short sha>`. A day keeps one release: CI creates the new one
+first, then deletes that date's earlier release together with its tag. Tags are
+immutable — never move, delete-and-recreate or force-push one: a local clone
+keeps its tags on `git fetch`, so a moved tag leaves a stale copy that a later
+push could write back. A `concurrency` group cancels a running build when a newer push
+arrives. Only the 5 newest releases are kept; older ones are deleted with their
+tags. The letter is never built in CI.
 
 ## Directory docs
 

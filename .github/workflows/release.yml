@@ -39,18 +39,24 @@ jobs:
           mv cv.pdf Stefan-Lendl-CV.pdf
 
       - name: Publish release for the commit date
-        # One release per day, updated in place: the tag is force-moved to this
-        # commit and the PDF is replaced, so the release keeps its ID and URL.
+        # One release per day, many tags per day. Each build is tagged
+        # <date>-<short sha>; a tag names one commit and is never moved. The
+        # new release is created first, then the day's earlier release is
+        # deleted together with its tag.
         run: |
-          git tag -f "$COMMIT_DATE"
-          git push -f origin "refs/tags/$COMMIT_DATE"
-          if gh release view "$COMMIT_DATE" >/dev/null 2>&1; then
-            gh release upload "$COMMIT_DATE" Stefan-Lendl-CV.pdf --clobber
-            gh release edit "$COMMIT_DATE" --latest
+          tag="$COMMIT_DATE-${GITHUB_SHA::7}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" Stefan-Lendl-CV.pdf --clobber
           else
-            gh release create "$COMMIT_DATE" Stefan-Lendl-CV.pdf \
-              --title "CV $COMMIT_DATE" --notes "Built from ${{ github.sha }}" --latest
+            gh release create "$tag" Stefan-Lendl-CV.pdf --target "$GITHUB_SHA" \
+              --title "CV $COMMIT_DATE" --notes "Built from $GITHUB_SHA" --latest
           fi
+          gh release list --limit 100 --json tagName --jq '.[].tagName' |
+            grep -E "^$COMMIT_DATE(-|$)" | grep -vxF "$tag" |
+            while read -r old; do
+              echo "Replacing release: $old"
+              gh release delete "$old" --yes --cleanup-tag
+            done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
