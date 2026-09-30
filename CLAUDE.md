@@ -1,89 +1,73 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Typst CV ([brilliant-cv](https://typst.app/universe/package/brilliant-cv/) 3.1.2)
+and cover letter ([letter-pro](https://typst.app/universe/package/letter-pro/) 3.0.0,
+DIN 5008). Human-facing overview and command table: `README.org`.
 
-## Project Overview
+## Build
 
-Typst-based CV and cover letter using [brilliant-cv](https://typst.app/universe/package/brilliant-cv/) (v3.1.2) for the CV and [letter-pro](https://typst.app/universe/package/letter-pro/) (v3.0.0, DIN 5008) for the cover letter. Personal data is stored in `metadata.toml`, with language-specific content modules in `modules_<lang>/` directories.
-
-## Build Commands
-
-All commands **must** be run through the Nix devShell to ensure correct tools, fonts, and environment:
-
-```bash
-nix develop --command just              # Compile CV to PDF (default)
-nix develop --command just check        # Type-check without output
-nix develop --command just watch        # Watch mode with auto-recompile
-nix develop --command just open         # Compile and open PDF
-nix develop --command just letter       # Compile cover letter
-nix develop --command just watch-letter # Watch cover letter
-```
-
-**Important**: Always use `nix develop --command <cmd>` to execute commands. Do not run `just` or `typst` directly outside the Nix shell.
-
-## Architecture
-
-```
-metadata.toml          # All configuration: personal info, layout, colors, fonts, language settings
-cv.typ                 # Main CV entry point - imports metadata and modules
-letter.typ             # Cover letter template (letter-pro, DIN 5008)
-letter-content.typ     # Per-letter content: recipient, subject, body (gitignored)
-letter-content.example.typ  # Example content file (copy to letter-content.typ)
-modules_en/            # English content modules (active)
-  ├── education.typ
-  ├── professional.typ
-  ├── skills.typ
-  ├── projects.typ
-  ├── certificates.typ
-  └── publications.typ
-assets/
-  ├── avatar.jpg       # Profile photo
-  └── logos/           # Organization logos for cv-entry
-```
-
-## Key Patterns
-
-- **Language switching**: Set `language = "en"` in metadata.toml; modules load from `modules_<lang>/`
-- **CV entries**: Use `cv-entry()` from brilliant-cv with `title`, `society`, `date`, `location`, `description`, `tags`
-- **Skills**: Use `cv-skill()` or `cv-skill-with-level()` with `h-bar()` separator
-- **Cover letter**: `letter.typ` is the template (committed); `letter-content.typ` holds per-letter content (gitignored). Content file exports `recipient` (content block), `subject` (string), and optionally `language` (string, defaults to `"en"`). Sender info comes from `metadata.toml` under `[personal.info]` and `[personal.letter]`
-
-## metadata.toml Structure
-
-```toml
-[layout.fonts]
-  regular_fonts = ["Source Sans 3"]
-  header_font = "Roboto"
-
-[personal]
-  first_name = "..."
-  [personal.info]
-    github, email, phone, linkedin, location
-
-  [personal.letter]
-    address = ["Street", "City"]  # used by letter.typ
-
-[lang.en]
-  header_quote = "..."
-```
-
-## Development Environment
-
-Nix flake provides reproducible dev environment with typst, just, and fonts:
+Run everything through the flake devShell — it provides `typst`, `just` and the
+fonts (`Source Sans 3`, `Roboto`, Font Awesome) via `FONTCONFIG_FILE`. Outside it
+typst warns about unknown font families and renders with fallback faces.
 
 ```bash
-direnv allow          # Activate flake devShell via .envrc
-nix develop           # Or enter manually
+nix develop --command just              # cv.typ -> cv.pdf
+nix develop --command just check        # type-check only (output to /dev/null)
+nix develop --command just letter       # letter.typ -> letter.pdf
+nix develop --command just watch        # also: watch-letter, open
 ```
 
-`flake.nix` configures:
-- `typst`, `just` tools
-- Fonts: `source-sans`, `roboto`, `font-awesome`
-- `FONTCONFIG_FILE` for fontconfig-aware tools
+The justfile runs typst as `env -u SOURCE_DATE_EPOCH typst`. Nix sets
+`SOURCE_DATE_EPOCH`, which freezes `datetime.today()` — without the unset, the
+letter's date line prints 1980. Keep the wrapper on any new recipe.
 
-## CI/CD
+## Conventions that hold everywhere
 
-GitHub Action (`.github/workflows/release.yml`) on push to `main`:
-1. Builds CV using nix devShell
-2. Creates release tagged `YYYY-MM-DD` (commit date)
-3. Uploads `YYYY-MM-DD-Stefan-Lendl-CV.pdf`
+- **Package versions are pinned in every file that imports them.**
+  `brilliant-cv:3.1.2` appears in `cv.typ` and each `modules_en/*.typ`; a bump
+  touches all of them in one change, or modules call functions from a
+  different version than the template that lays them out.
+- **All personal data lives in `metadata.toml`** (brilliant-cv schema, linked on
+  its first line). `[personal.letter].address` is a repo-local key read only by
+  `letter.typ`; brilliant-cv ignores it.
+- **Git LFS stores `*.pdf` and everything under `assets/`** (`.gitattributes`).
+  A new image there is an LFS object; CI checks out with `lfs: true`.
+- Generated PDFs (`/*.pdf`) are gitignored. Never commit them.
+
+## CV assembly (`cv.typ`)
+
+- Sections render in the order of the `import-modules((...))` list. A module file
+  that is not in that list does not render — `certificates` and `publications`
+  are deliberately commented out.
+- Modules load from `modules_<language>/`, where `language` comes from
+  `metadata.toml` or `typst compile --input language=<xx> cv.typ`. A new language
+  needs a `modules_<xx>/` with every listed module and a `[lang.<xx>]` table in
+  `metadata.toml`.
+
+## Cover letter (`letter.typ` + `letter-content.typ`)
+
+`letter-content.typ` is gitignored and holds one letter's content; copy it from
+`letter-content.example.typ`. `letter.typ` uses it twice:
+
+- `#import` reads its `recipient` (content), `subject` (string) and optional
+  `language` (default `"en"`, sets hyphenation and date language).
+- `#include` renders the whole file as the letter body. Top-level `#let`
+  bindings produce no output, so anything else in the file — including the
+  greeting — is body text. Sender block and date come from `metadata.toml` and
+  `letter.typ`; do not repeat them in the content file.
+
+## CI (`.github/workflows/release.yml`)
+
+Every push to `main` builds the CV with `nix develop --command just compile` and
+publishes `Stefan-Lendl-CV.pdf` as a GitHub release tagged with the commit date
+(`YYYY-MM-DD`). A second push the same day deletes and recreates that release
+and tag. Only the 5 newest releases are kept; older ones are deleted. The letter
+is never built in CI.
+
+## Directory docs
+
+- `modules_en/CLAUDE.md` — writing CV content: entry style, tags, module rules.
+
+When you change code in a directory that has a `CLAUDE.md`, reconcile that file
+before finishing. The same holds for this file when the build, CI or letter
+mechanics change.
