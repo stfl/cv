@@ -1,4 +1,6 @@
 /.claude/
+!/.claude/seettings.json
+!/.claude/skills/
 /.direnv/
 /*.pdf
 /letter-content.typ
