@@ -3,16 +3,56 @@
 #cv-section("Professional Experience")
 
 #cv-entry(
+  title: [Senior Rust Engineer (Contract)],
+  society: [Momentedge],
+  date: [May 2026 - Present],
+  location: [Remote],
+  description: list(
+    [Designed and built Momentedge Clipper, a Rust application that cuts event-triggered clips from a live ROS 2 MCAP sensor recording, including a configurable pre- and postroll window around each event],
+    [Implemented a low-level MCAP parser that tails the growing file while it is still being written, indexing only message timestamps and seeking directly to the byte ranges of a clip window, never deserializing a message body],
+    [Kept the recorder untouched: clipper holds the recording read-only and communicates only through the file, running at 0.45 % of one core and 22 MiB on a Jetson Orin Nano],
+    [Shipped arm64 Debian packages for ROS 2 Humble and Jazzy, plus a ROS-free build that cuts identical clips from finished recordings],
+  ),
+  tags: ("Rust", "ROS 2", "MCAP", "Binary File Formats", "Jetson", "Robotics"),
+)
+
+#cv-entry(
   title: [Senior Software Engineer (Contract)],
   society: [ÖBB (Austrian Federal Railways)],
   date: [Oct 2024 - Present],
   location: [Vienna, Austria],
   description: list(
-    [Executed a comprehensive architectural overhaul of the railway's edge measurement devices, migrating a legacy Yocto Linux distribution to the latest LTS release and completely modernizing the core system],
-    [Integrated a fail-proof A/B OTA firmware update mechanism at the bootloader level, enabling seamless remote updates, full image control, and direct integration with a ThingsBoard device management platform],
-    [Architected a performant Rust application to upload local telemetry data over a highly unreliable network connection, ensuring zero data loss and continuous monitoring of critical metrics],
+    [Executed a comprehensive architectural overhaul of the railway's edge measurement devices, migrating the legacy Yocto Linux distribution from Dunfell to the Scarthgap LTS release, including an in-field migration path for devices already in service],
+    [Integrated a fail-proof A/B OTA firmware update mechanism with RAUC, signed through a code-signing chain on ÖBB's PKI, and built a Rust MQTT agent linking each device to a ThingsBoard device management platform],
+    [Architected a Rust service that exports measurement data from the on-device InfluxDB 3 time-series database as Parquet and uploads it to a ground-side SFTP server over a highly unreliable network connection, with crash-safe atomic state, zero data loss, and a gapless transmission report that lets the ground side prove completeness],
+    [Drove requirements engineering with ÖBB stakeholders and contributed to the EN 50716 quality assurance plan for the device operating system],
   ),
-  tags: ("Rust", "Embedded Linux", "Yocto", "Bootloader"),
+  tags: ("Rust", "Embedded Linux", "Yocto", "Bootloader", "Requirements Engineering", "Time Series Databases"),
+)
+
+#cv-entry(
+  title: [Maintenance & Operations (Contract)],
+  society: [pulswerk],
+  date: [Nov 2022 - Present],
+  location: [Vienna, Austria],
+  description: list(
+    [Maintained the Django application built during my employment, shipping fixes and updates under a freelance maintenance contract],
+    [Operated its self-hosted Dokku hosting on Debian, handling monitoring, upgrades, and incident resolution],
+  ),
+  tags: ("Django", "Python", "Dokku", "Debian", "Operations"),
+)
+
+#cv-entry(
+  title: [Support Engineer (Contract)],
+  society: [Origina],
+  date: [Feb 2026 - Jun 2026],
+  location: [Remote],
+  description: list(
+    [Assessed Proxmox VE and Proxmox Backup Server for third-party support, bringing both products into Origina's catalogue of supported enterprise software],
+    [Mapped each functional area and feature against the configurations Origina can support, and flagged the setups that pose a supportability risk],
+    [Drew on hands-on Proxmox development and Tier-3 support experience to judge where independent support is sustainable without vendor access],
+  ),
+  tags: ("Proxmox VE", "Proxmox Backup Server", "Linux", "Enterprise Support"),
 )
 
 #cv-entry(
@@ -24,6 +64,7 @@
     [Led a cross-functional engineering team, taking full ownership of requirements and system architecture],
     [Architected a low-level C++ serialization protocol bridging remote control messages to the vehicle's internal vehicle bus, enabling secure, real-time cloud-to-vehicle command execution],
     [Actively contributed to the hands-on development and maintenance of a custom Yocto Linux distribution],
+    [Drove the requirements engineering process and stakeholder alignment across engineering, product, and customer teams],
   ),
   tags: ("C++", "Embedded Linux", "Yocto", "Requirements Engineering", "Technical Leadership"),
 )
@@ -42,9 +83,9 @@
 )
 
 #cv-entry(
-  title: [Software Engineer & Architect (Employee $arrow.r$ Freelance)],
+  title: [Software Engineer & Architect],
   society: [pulswerk],
-  date: [Nov 2019 - Present],
+  date: [Nov 2019 - Nov 2022],
   location: [Vienna, Austria],
   description: list(
     [Built a full-stack Django web application from scratch, seamlessly integrating modern Python with legacy PHP systems],
@@ -62,6 +103,7 @@
   description: list(
     [Developed custom Yocto BSPs for i.MX platforms, porting camera drivers and optimizing at the kernel level],
     [Engineered low-latency GStreamer video streaming pipelines for i.MX and Nvidia Jetson target hardware],
+    [Collaborated with hardware engineers on board bring-up, device driver development, and system integration for ARM-based platforms],
     [Built a robust Rust-based API (ZeroMQ/Protobuf) to dynamically configure underlying Linux components],
   ),
   tags: ("Embedded Linux", "Yocto", "BSP", "GStreamer", "Rust", "C/C++"),

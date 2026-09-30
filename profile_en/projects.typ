@@ -9,6 +9,7 @@
   location: [Vienna, Austria],
   description: list(
     [Coordinated regular technical meetups, successfully growing the local Rust community from 200 to over 500 members],
+    [Managed speaker curation, event logistics, and delivered a technical presentation on the Rust `Deref` trait],
   ),
   tags: ("Rust", "Community Leadership", "Event Coordination", "Public Speaking"),
 )
@@ -36,6 +37,7 @@
   description: list(
     [Architected a multi-node Proxmox cluster in an off-grid shipping container for a cashless POS system, guaranteeing continuous business operations in an extreme, low-resource environment],
     [Managed severe physical infrastructure constraints, wiring UPS systems to diesel generators and handling manual failovers during frequent outages],
+    [Led distributed technical teams maintaining 24/7 operations, demonstrating leadership and problem-solving under challenging resource limitations],
   ),
   tags: ("Proxmox", "Off-Grid Infrastructure", "Networking", "Crisis Management", "Resilience"),
 )
