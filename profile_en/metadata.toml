@@ -50,7 +50,15 @@ display_footer = true
 
 [inject]
 # Hidden ATS keywords; remove the list to disable injection
-injected_keywords_list = ["Rust", "Embedded Linux", "Yocto", "C++", "Software Architecture", "DevOps", "NixOS"]
+injected_keywords_list = [
+  "Rust",
+  "Embedded Linux",
+  "Yocto",
+  "C++",
+  "Software Architecture",
+  "DevOps",
+  "NixOS",
+]
 
 [personal]
 first_name = "Stefan"

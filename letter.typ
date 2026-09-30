@@ -1,4 +1,4 @@
-#import "@preview/letter-pro:3.0.0": letter-generic, header-simple, recipient-box
+#import "@preview/letter-pro:3.0.0": header-simple, letter-generic, recipient-box
 #let metadata = toml("profile_en/metadata.toml")
 
 #import "letter-content.typ"
@@ -14,7 +14,7 @@
 #let sender-name = personal.first_name + " " + personal.last_name
 
 #set text(lang: language)
-#set text(font: metadata.layout.fonts.regular_fonts, hyphenate: false)
+#set text(font: metadata.layout.fonts.regular_fonts, hyphenate: true)
 #set par(justify: true)
 #set document(title: subject, author: sender-name)
 
@@ -23,7 +23,10 @@
   folding-marks: false,
   hole-mark: false,
   header: pad(
-    left: 25mm, right: 20mm, top: 20mm, bottom: 5mm,
+    left: 25mm,
+    right: 20mm,
+    top: 20mm,
+    bottom: 5mm,
     align(bottom + right, header-simple(
       sender-name,
       address.join(linebreak()),

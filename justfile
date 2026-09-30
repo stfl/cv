@@ -8,6 +8,14 @@ default: compile
 check:
     {{ typst }} compile cv.typ /dev/null -f pdf
 
+# Format .typ and .toml files
+fmt:
+    treefmt
+
+# Fail if any file is not formatted
+fmt-check:
+    treefmt --fail-on-change --no-cache
+
 # Compile CV to PDF
 compile:
     {{ typst }} compile cv.typ

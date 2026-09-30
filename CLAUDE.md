@@ -18,6 +18,13 @@ nix develop --command just letter       # letter.typ -> letter.pdf
 nix develop --command just watch        # also: watch-letter, open
 ```
 
+Format with `nix develop --command just fmt` (treefmt: typstyle for `.typ`,
+taplo for `.toml`; Markdown and Org are never formatted). typstyle runs at
+`--line-width 120` to match tinymist's format-on-save in the editor — its CLI
+default of 80 would reflow every file the editor saves. `just fmt-check` fails
+on unformatted files. treefmt only walks git-visible files, so the gitignored
+`letter-content.typ` is skipped.
+
 The justfile runs typst as `env -u SOURCE_DATE_EPOCH typst`. Nix sets
 `SOURCE_DATE_EPOCH`, which freezes `datetime.today()` — without the unset, the
 letter's date line prints 1980. Keep the wrapper on any new recipe.

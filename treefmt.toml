@@ -1,0 +1,14 @@
+# Formatters for `just fmt` / `treefmt`. Markdown and Org files are left alone.
+excludes = ["*.md", "*.org", "flake.lock"]
+
+# Same formatter and width as tinymist's format-on-save (tinymist defaults to
+# typstyle at 120 columns; the typstyle CLI defaults to 80).
+[formatter.typstyle]
+command = "typstyle"
+options = ["--inplace", "--line-width", "120"]
+includes = ["*.typ"]
+
+[formatter.taplo]
+command = "taplo"
+options = ["format"]
+includes = ["*.toml"]

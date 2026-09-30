@@ -27,6 +27,9 @@
                 p.letter-pro
               ]))
               pkgs.just
+              pkgs.treefmt
+              pkgs.typstyle
+              pkgs.taplo
             ] ++ fonts;
 
             FONTCONFIG_FILE = pkgs.makeFontsConf {

@@ -59,6 +59,8 @@ All personal information and layout settings are in =profile_en/metadata.toml=:
 | =just open=         | Compile and open PDF           |
 | =just letter=       | Compile cover letter           |
 | =just watch-letter= | Watch cover letter             |
+| =just fmt=          | Format .typ and .toml files    |
+| =just fmt-check=    | Fail on unformatted files      |
 
 * Cover Letter
 
