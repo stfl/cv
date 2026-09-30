@@ -7,6 +7,11 @@ on:
 permissions:
   contents: write
 
+# A newer push supersedes a running build: the release only ever needs the tip.
+concurrency:
+  group: release
+  cancel-in-progress: true
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -18,7 +23,7 @@ jobs:
 
       - name: Get commit date and store in env
         run: |
-          echo "COMMIT_DATE=$(git show -s --format=%cs ${{ github.sha }})" >> $GITHUB_ENV
+          echo "COMMIT_DATE=$(git show -s --format=%cs ${{ github.sha }})" >> "$GITHUB_ENV"
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -33,33 +38,28 @@ jobs:
         run: |
           mv cv.pdf Stefan-Lendl-CV.pdf
 
-      - name: Delete existing release if same date
+      - name: Publish release for the commit date
+        # One release per day, updated in place: the tag is force-moved to this
+        # commit and the PDF is replaced, so the release keeps its ID and URL.
         run: |
-          # Delete release and tag if they exist (will fail silently if they don't)
-          gh release delete "$COMMIT_DATE" --yes 2>/dev/null || true
-          git push origin --delete "$COMMIT_DATE" || true
+          git tag -f "$COMMIT_DATE"
+          git push -f origin "refs/tags/$COMMIT_DATE"
+          if gh release view "$COMMIT_DATE" >/dev/null 2>&1; then
+            gh release upload "$COMMIT_DATE" Stefan-Lendl-CV.pdf --clobber
+            gh release edit "$COMMIT_DATE" --latest
+          else
+            gh release create "$COMMIT_DATE" Stefan-Lendl-CV.pdf \
+              --title "CV $COMMIT_DATE" --notes "Built from ${{ github.sha }}" --latest
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.COMMIT_DATE }}
-          name: CV ${{ env.COMMIT_DATE }}
-          files: Stefan-Lendl-CV.pdf
-          make_latest: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Cleanup old releases
         run: |
-          # List all releases, skip the ${keep} most recent, delete the rest
-          gh release list --limit 100 --json tagName --jq ".[${keep}:][].tagName" | \
-          while read tag; do
-            if [ -n "$tag" ]; then
-              echo "Deleting release: $tag"
-              gh release delete "$tag" --yes
-            fi
+          gh release list --limit 100 --json tagName --jq ".[${keep}:][].tagName" |
+          while read -r tag; do
+            echo "Deleting release: $tag"
+            gh release delete "$tag" --yes --cleanup-tag
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
