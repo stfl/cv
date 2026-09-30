@@ -26,8 +26,8 @@ just open      # Compile and open in browser
 ├── cv.typ                       # Main CV document
 ├── letter.typ                   # Cover letter template
 ├── letter-content.example.typ   # Example letter content (copy to letter-content.typ)
-├── metadata.toml                # Personal info, layout, colors
-├── modules_en/                  # English content modules
+├── profile_en/                  # English CV profile
+│   ├── metadata.toml            # Personal info, layout, colors
 │   ├── education.typ
 │   ├── professional.typ
 │   ├── skills.typ
@@ -41,11 +41,13 @@ just open      # Compile and open in browser
 
 * Configuration
 
-All personal information and layout settings are in =metadata.toml=:
+All personal information and layout settings are in =profile_en/metadata.toml=:
 
+- =header_quote=, =cv_footer= - Tagline under the header, footer text
 - =[personal]= - Name, contact info, social links
 - =[layout]= - Colors, fonts, spacing
-- =[lang.en]= - Header quote, footer text
+- =[inject]= - Hidden ATS keywords
+- =[custom]= - Sender address for the cover letter
 
 * Commands
 
@@ -60,7 +62,7 @@ All personal information and layout settings are in =metadata.toml=:
 
 * Cover Letter
 
-The cover letter uses [[https://typst.app/universe/package/letter-pro/][letter-pro]] with DIN 5008 formatting. Sender info is pulled from =metadata.toml=, while per-letter content is kept in =letter-content.typ= (gitignored). To set up:
+The cover letter uses [[https://typst.app/universe/package/letter-pro/][letter-pro]] with DIN 5008 formatting. Sender info is pulled from =profile_en/metadata.toml=, while per-letter content is kept in =letter-content.typ= (gitignored). To set up:
 
 #+begin_src bash
 cp letter-content.example.typ letter-content.typ
@@ -94,17 +96,41 @@ or use the nix devShell which installs the fonts already
 
 - Source Sans 3 (body text)
 - Roboto (headers)
-- Font Awesome (icons)
+- Font Awesome 7 (icons)
 
-* Multi-language Support
+* Profiles
 
-Set the language in =metadata.toml=:
+Each =profile_<name>/= directory is a complete, self-contained CV: its own
+=metadata.toml= plus all content modules. =en= is the default; select another at
+compile time:
 
-#+begin_src toml
-language = "en"  # Uses modules_en/
+#+begin_src bash
+typst compile cv.typ --input profile=de
 #+end_src
 
-Create corresponding module directories (=modules_de/=, =modules_fr/=, etc.) with translated content.
+To add a profile (a translation, or a variant tailored to one kind of role),
+copy =profile_en/= to =profile_<name>/= and edit it. Profiles share nothing, so
+a change to one is not reflected in the others. The cover letter always reads
+=profile_en/metadata.toml=.
+
+* Updating Typst Packages
+
+The nix devShell provides brilliant-cv and letter-pro from nixpkgs
+(=typst.withPackages= in =flake.nix=), so builds never download packages and
+the versions are pinned by =flake.lock=. The version in each
+=#import "@preview/..."= line must match the one nixpkgs provides; otherwise
+the build fails with a =Read-only file system= error.
+
+To upgrade:
+
+#+begin_src bash
+nix flake update
+nix eval --raw --inputs-from . nixpkgs#typstPackages.brilliant-cv.version
+#+end_src
+
+Then set that version in the imports of =cv.typ= and every =profile_en/*.typ=
+(and =letter.typ= for letter-pro). Outside the devShell, typst downloads
+whatever version the imports name.
 
 * Github Action and Releases
 

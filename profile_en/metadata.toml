@@ -1,8 +1,7 @@
-#:schema https://raw.githubusercontent.com/yunanwg/brilliant-CV/main/metadata.toml.schema.json
+#:schema https://raw.githubusercontent.com/yunanwg/brilliant-CV/main/template/metadata.toml.schema.json
 
-# Set the output language
-# INFO: value must matches folder suffix; i.e "zh" -> "./modules_zh"
-language = "en"
+header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
+cv_footer = "Curriculum vitae"
 
 [layout]
 # Optional values: skyblue, red, nephritis, concrete, darknight
@@ -50,11 +49,7 @@ display_footer = true
 
 
 [inject]
-# Decide if you want to inject AI prompt or not
-inject_ai_prompt = false
-
-# Decide if you want to inject keywords or not
-inject_keywords = true
+# Hidden ATS keywords; remove the list to disable injection
 injected_keywords_list = ["Rust", "Embedded Linux", "Yocto", "C++", "Software Architecture", "DevOps", "NixOS"]
 
 [personal]
@@ -69,12 +64,7 @@ homepage = "lendl.dev"
 linkedin = "stfl"
 location = "Vienna, Austria"
 
-[personal.letter]
-address = ["Jurekgasse 25/30", "1150 Vienna"]
 
-# add a new section if you want to include the language of your choice
-# i.e. [[lang.ru]]
-# each section must contains the following fields
-[lang.en]
-header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
-cv_footer = "Curriculum vitae"
+# Repo-local keys, read only by letter.typ
+[custom]
+letter_address = ["Zinckgasse 11/34", "1150 Vienna"]

@@ -1,5 +1,5 @@
 #import "@preview/letter-pro:3.0.0": letter-generic, header-simple, recipient-box
-#let metadata = toml("./metadata.toml")
+#let metadata = toml("profile_en/metadata.toml")
 
 #import "letter-content.typ"
 #let content-fields = dictionary(letter-content)
@@ -10,15 +10,18 @@
 
 #let personal = metadata.personal
 #let info = personal.info
-#let address = personal.letter.address
+#let address = metadata.custom.letter_address
 #let sender-name = personal.first_name + " " + personal.last_name
 
 #set text(lang: language)
 #set text(font: metadata.layout.fonts.regular_fonts, hyphenate: false)
+#set par(justify: true)
 #set document(title: subject, author: sender-name)
 
 #show: letter-generic.with(
   format: "DIN-5008-B",
+  folding-marks: false,
+  hole-mark: false,
   header: pad(
     left: 25mm, right: 20mm, top: 20mm, bottom: 5mm,
     align(bottom + right, header-simple(

@@ -22,7 +22,10 @@
         {
           default = pkgs.mkShell {
             buildInputs = [
-              pkgs.typst
+              (pkgs.typst.withPackages (p: [
+                p.brilliant-cv
+                p.letter-pro
+              ]))
               pkgs.just
             ] ++ fonts;
 

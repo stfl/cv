@@ -1,6 +1,7 @@
-# modules_en — CV content
+# profile_en — CV content
 
-Each file here is one CV section. A file renders only if its name is in the
+This directory is the `en` profile: `metadata.toml` plus one `.typ` file per CV
+section. A section file renders only if its name is in the
 `import-modules((...))` list in `../cv.typ`, in that list's order. Adding a
 section means adding the file and its list entry together. `certificates.typ`
 and `publications.typ` exist but are commented out of that list; editing them
@@ -37,6 +38,6 @@ changes nothing in the PDF.
 
 ## Language copies
 
-Another `modules_<xx>/` must contain every file listed in `../cv.typ` with the
-same names. Content changes here are not mirrored anywhere — there is only
-English today.
+Another `profile_<xx>/` must contain its own complete `metadata.toml` and every
+file listed in `../cv.typ` with the same names. Changes here are not mirrored
+anywhere — `en` is the only profile.
