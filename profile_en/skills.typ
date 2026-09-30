@@ -51,8 +51,7 @@
     type: [Programming],
     info: skill-tags((
       [Rust],
-      [C++],
-      [C],
+      [C/C++],
       [Python],
       [Bash/Shell],
     )),
@@ -65,12 +64,13 @@
       [Embedded Linux],
       [Yocto / OpenEmbedded],
       [NixOS],
-      [ROS 2 / MCAP],
       [Proxmox VE / PBS],
-      [Dokku / Debian],
+      [Docker],
       [GStreamer],
       [InfluxDB],
-      [Kubernetes (Basic)],
+      [CI/CD],
+      [Kubernetes],
+      [PKI / Certificates],
     )),
   )
 

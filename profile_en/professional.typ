@@ -11,9 +11,9 @@
     [Designed and built Momentedge Clipper, a Rust application that cuts event-triggered clips from a live ROS 2 MCAP sensor recording, including a configurable pre- and postroll window around each event],
     [Implemented a low-level MCAP parser that tails the growing file while it is still being written, indexing only message timestamps and seeking directly to the byte ranges of a clip window, never deserializing a message body],
     [Kept the recorder untouched: clipper holds the recording read-only and communicates only through the file, running at 0.45 % of one core and 22 MiB on a Jetson Orin Nano],
-    [Shipped arm64 Debian packages for ROS 2 Humble and Jazzy, plus a ROS-free build that cuts identical clips from finished recordings],
+    [Set up GitHub Actions CI with a per-distro build and test matrix, releasing arm64 Debian packages for ROS 2 Humble and Jazzy, plus a ROS-free build that cuts identical clips from finished recordings],
   ),
-  tags: ("Rust", "ROS 2", "MCAP", "Binary File Formats", "Jetson", "Robotics"),
+  tags: ("Rust", "ROS 2", "MCAP", "Binary File Formats", "Jetson", "GitHub Actions"),
 )
 
 #cv-entry(
@@ -23,11 +23,21 @@
   location: [Vienna, Austria],
   description: list(
     [Executed a comprehensive architectural overhaul of the railway's edge measurement devices, migrating the legacy Yocto Linux distribution from Dunfell to the Scarthgap LTS release, including an in-field migration path for devices already in service],
-    [Integrated a fail-proof A/B OTA firmware update mechanism with RAUC, signed through a code-signing chain on ÖBB's PKI, and built a Rust MQTT agent linking each device to a ThingsBoard device management platform],
+    [Integrated a fail-proof A/B OTA firmware update mechanism with RAUC, generating the keys and CSRs and setting up its code-signing chain on ÖBB's PKI, and built a Rust MQTT agent linking each device to a ThingsBoard device management platform],
     [Architected a Rust service that exports measurement data from the on-device InfluxDB 3 time-series database as Parquet and uploads it to a ground-side SFTP server over a highly unreliable network connection, with crash-safe atomic state, zero data loss, and a gapless transmission report that lets the ground side prove completeness],
-    [Drove requirements engineering with ÖBB stakeholders and contributed to the EN 50716 quality assurance plan for the device operating system],
+    [Added monitoring and email alerting on field devices for vehicle bus read errors and IP address changes],
+    [Drove requirements engineering with ÖBB stakeholders, working ticket-driven in Jira with pull requests and YAML pipelines on Azure DevOps, and contributed to the EN 50716 quality assurance plan for the device operating system],
   ),
-  tags: ("Rust", "Embedded Linux", "Yocto", "Bootloader", "Requirements Engineering", "Time Series Databases"),
+  tags: (
+    "Rust",
+    "Embedded Linux",
+    "Requirements Engineering",
+    "Yocto",
+    "Bootloader",
+    "PKI / Certificates",
+    "InfluxDB",
+    "Azure DevOps",
+  ),
 )
 
 #cv-entry(
@@ -39,7 +49,7 @@
     [Maintained the Django application built during my employment, shipping fixes and updates under a freelance maintenance contract],
     [Operated its self-hosted Dokku hosting on Debian, handling monitoring, upgrades, and incident resolution],
   ),
-  tags: ("Django", "Python", "Dokku", "Debian", "Operations"),
+  tags: ("Django", "Python", "Dokku", "Debian", "Operations", "CI/CD"),
 )
 
 #cv-entry(
@@ -77,9 +87,9 @@
   description: list(
     [Identified, debugged, and successfully upstreamed a kernel module bug fix to the OpenZFS project],
     [Developed full-stack features for Proxmox Backup Server, integrating a JS frontend with a Rust backend],
-    [Contributed to the Proxmox VE SDN stack in Perl and provided Tier-3 enterprise infrastructure support],
+    [Contributed to the Proxmox VE SDN stack in Perl and resolved Tier-3 enterprise support incidents across storage, networking, and virtualization],
   ),
-  tags: ("Rust", "Perl", "ZFS", "Enterprise Support"),
+  tags: ("Rust", "Perl", "ZFS", "Enterprise Support", "Troubleshooting", "Mailing List"),
 )
 
 #cv-entry(
@@ -92,7 +102,7 @@
     [Deployed the initial application to a custom Kubernetes cluster before pragmatically scaling back to a self-hosted Dokku PaaS, optimizing for long-term maintainability and drastically reducing operational overhead],
     [Modernized engineering culture by introducing Git version control, CI/CD pipelines, and structured project management],
   ),
-  tags: ("Django", "Python", "Kubernetes", "Dokku", "PHP", "Requirements Engineering"),
+  tags: ("Django", "Python", "PHP", "Requirements Engineering", "CI/CD", "Gitlab", "GitHub", "Kubernetes", "Dokku"),
 )
 
 #cv-entry(
@@ -106,7 +116,7 @@
     [Collaborated with hardware engineers on board bring-up, device driver development, and system integration for ARM-based platforms],
     [Built a robust Rust-based API (ZeroMQ/Protobuf) to dynamically configure underlying Linux components],
   ),
-  tags: ("Embedded Linux", "Yocto", "BSP", "GStreamer", "Rust", "C/C++"),
+  tags: ("Embedded Linux", "Yocto", "BSP", "GStreamer", "Rust", "C/C++", "CI/CD"),
 )
 
 #cv-entry(

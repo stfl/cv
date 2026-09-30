@@ -1,6 +1,6 @@
 #:schema https://raw.githubusercontent.com/yunanwg/brilliant-CV/main/template/metadata.toml.schema.json
 
-header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · Safety-Critical Systems | Delivering production solutions from design to deployment"
+header_quote = "Senior Software Engineer & Consulting Architect | Embedded Linux · Rust · DevOps | Delivering production solutions from design to deployment and operation"
 cv_footer = "Curriculum vitae"
 
 [layout]
@@ -31,7 +31,7 @@ header_align = "left"
 display_profile_photo = true
 # Radius in % to clip profile photo at
 profile_photo_radius = "50%"
-info_font_size = "10pt"
+info_font_size = "11pt"
 
 [layout.entry]
 # Decide if you want to put your company in bold or your position in bold
@@ -42,7 +42,7 @@ display_logo = true
 
 [layout.footer]
 # Decide if you want to display page counter or not
-display_page_counter = false
+display_page_counter = true
 
 # Decide if you want to display the footer or not
 display_footer = true
@@ -52,11 +52,16 @@ display_footer = true
 # Hidden ATS keywords; remove the list to disable injection
 injected_keywords_list = [
   "Rust",
+  "Python",
   "Embedded Linux",
+  "Linux",
   "Yocto",
-  "C++",
+  "C/C++",
   "Software Architecture",
+  "Requirements Engineering",
   "DevOps",
+  "CI/CD",
+  "Kubernetes",
   "NixOS",
 ]
 
